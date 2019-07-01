@@ -1,6 +1,6 @@
 namespace CookingAssist.Dtos
 {
-    public class Recipes
+    public class RecipeForListDto
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -27,7 +27,12 @@ namespace CookingAssist.Controllers
         public async Task<IActionResult> GetRecipes()
         {
             var recipes = await _repo.GetRecipes();
-            return Ok(recipes);
+            if (recipes == null)
+                return NotFound(new RecipeForReturnDto("Failure"));
+            
+            var recipeForListDto = _mapper.Map<IEnumerable<RecipeForListDto>>(recipes);
+            var recipeForReturnDto = new RecipeForReturnDto("Success", recipeForListDto);
+            return Ok(recipeForReturnDto);
         }
 
         // GET api/recipes{id}

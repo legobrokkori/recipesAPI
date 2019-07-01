@@ -6,6 +6,6 @@ namespace CookingAssist.Data
 {
     public interface IRecipeRepository
     {
-         Task<List<Recipe>> GetRecipes();
+         Task<IEnumerable<Recipe>> GetRecipes();
     }
 }

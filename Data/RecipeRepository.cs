@@ -18,7 +18,7 @@ namespace CookingAssist.Data
 
         }
 
-        public async Task<List<Recipe>> GetRecipes()
+        public async Task<IEnumerable<Recipe>> GetRecipes()
         {
             var recipes = await _context.Recipes.ToListAsync();
             return recipes;
