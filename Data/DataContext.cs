@@ -6,7 +6,12 @@ namespace CookingAssist.Data
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base (options) { }
-
-        public DbSet<Recipe> Recipes { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        
+            modelBuilder.HasDefaultSchema("public");
+        }
+        public DbSet<Recipe> recipes { get; set; }
     }
 }

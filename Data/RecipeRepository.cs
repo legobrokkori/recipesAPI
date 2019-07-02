@@ -20,7 +20,7 @@ namespace CookingAssist.Data
 
         public async Task<IEnumerable<Recipe>> GetRecipes()
         {
-            var recipes = await _context.Recipes.ToListAsync();
+            var recipes = await _context.recipes.ToListAsync();
             return recipes;
         }
     }
