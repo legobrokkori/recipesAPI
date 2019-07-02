@@ -7,5 +7,6 @@ namespace CookingAssist.Data
     public interface IRecipeRepository
     {
          Task<IEnumerable<Recipe>> GetRecipes();
+         Task<Recipe> GetRecipe(int id);
     }
 }

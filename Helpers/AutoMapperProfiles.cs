@@ -10,7 +10,6 @@ namespace CookingAssist.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<Recipe, RecipeForListDto>();
-            CreateMap<IEnumerable<Recipe>, RecipeForReturnDto>();
         }
     }
 }

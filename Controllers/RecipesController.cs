@@ -28,10 +28,10 @@ namespace CookingAssist.Controllers
         {
             var recipes = await _repo.GetRecipes();
             if (recipes == null)
-                return NotFound(new RecipeForReturnDto("Failure"));
+                return NotFound(new RecipesForReturnDto("Failure"));
             
             var recipeForListDto = _mapper.Map<IEnumerable<RecipeForListDto>>(recipes);
-            var recipeForReturnDto = new RecipeForReturnDto("Success", recipeForListDto);
+            var recipeForReturnDto = new RecipesForReturnDto("Success", recipeForListDto);
             return Ok(recipeForReturnDto);
         }
 
@@ -39,9 +39,13 @@ namespace CookingAssist.Controllers
         [HttpGet("{id}", Name = "GetRecipes")]
         public async Task<IActionResult> GetRecipes(int id)
         {
-            //var recipe = await _repo.GetRecipe(id);
-            //return Ok(recipe);
-            return Ok();
+            var recipe = await _repo.GetRecipe(id);
+            if (recipe == null)
+                return NotFound(new RecipeForReturnDto("Failure"));
+
+            var recipeForListDto = _mapper.Map<RecipeForListDto>(recipe);
+            var recipeForReturnDto = new RecipeForReturnDto("Success", recipeForListDto);
+            return Ok(recipeForReturnDto);
         }
     }
 }

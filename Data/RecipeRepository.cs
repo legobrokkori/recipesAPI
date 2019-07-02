@@ -23,5 +23,11 @@ namespace CookingAssist.Data
             var recipes = await _context.recipes.ToListAsync();
             return recipes;
         }
+
+        public async Task<Recipe> GetRecipe(int id)
+        {
+            var recipe = await _context.recipes.FirstOrDefaultAsync(r => r.id == id);
+            return recipe;
+        }
     }
 }
